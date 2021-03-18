@@ -2,8 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ho/src/pages/play/common/video/test.dart';
+
 import 'package:flutter_ho/src/utils/log_utils.dart';
 import 'package:video_player/video_player.dart';
+
+// import 'common/demo_page.dart';
 
 /// 创建人： Created by zhaolong
 /// 创建时间：Created by  on 2020/12/18.
@@ -14,16 +18,16 @@ import 'package:video_player/video_player.dart';
 ///
 /// 代码清单
 ///代码清单
-class VideoDetails2Widget extends StatefulWidget {
+class VideoDetailsWidget extends StatefulWidget {
   final StreamController streamController;
 
-  VideoDetails2Widget({this.streamController});
+  VideoDetailsWidget({this.streamController});
 
   @override
   _VideoDetailsWidgetState createState() => _VideoDetailsWidgetState();
 }
 
-class _VideoDetailsWidgetState extends State<VideoDetails2Widget> {
+class _VideoDetailsWidgetState extends State<VideoDetailsWidget> {
   //创建视频播放控制器
   VideoPlayerController _controller;
   bool _isPlay = false;
@@ -32,7 +36,8 @@ class _VideoDetailsWidgetState extends State<VideoDetails2Widget> {
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.asset('assets/video/list_item.mp4')
+    _controller = VideoPlayerController.network(
+        'https://res.exexm.com/cw_145225549855002')
       ..initialize().then((_) {
         LogUtils.e("加载完成");
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
@@ -127,23 +132,27 @@ class _VideoDetailsWidgetState extends State<VideoDetails2Widget> {
                 //0.3 的蓝色透明度
                 color: Colors.blueGrey.withOpacity(0.5),
                 //手势监听
-                child: GestureDetector(
-                  //手指抬起后的回调
-                  onTap: controllerClickFunction,
-                  //层叠布局
-                  child: Stack(
-                    //子Widget居中对齐
-                    alignment: Alignment.center,
-                    children: [
-                      ClipOval(
-                        child: Container(
-                          width: 54,
-                          height: 54,
-                          decoration: BoxDecoration(
-                              gradient: RadialGradient(colors: [
-                            Colors.black,
-                            Colors.black.withOpacity(0.3),
-                          ])),
+                child: Container(),
+              ),
+            ),
+
+            //顶部对齐的文本
+            Positioned(
+              top: 1,
+              left: 10,
+              right: 10,
+              height: 44,
+              child: Row(
+                children: [
+                  GestureDetector(
+                    //手指抬起后的回调
+                    onTap: controllerClickFunction,
+                    //层叠布局
+                    child: Stack(
+                      //子Widget居中对齐
+                      alignment: Alignment.center,
+                      children: [
+                        ClipOval(
                           child: Icon(
                             _controller.value.isPlaying
                                 ? Icons.pause
@@ -151,26 +160,30 @@ class _VideoDetailsWidgetState extends State<VideoDetails2Widget> {
                             size: 33,
                             color: Colors.white,
                           ),
-                        ),
-                      )
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ),
-            ),
-            //顶部对齐的文本
-            Positioned(
-              top: 10,
-              left: 10,
-              right: 10,
-              height: 44,
-              child: Text(
-                "早起的年轻人",
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+                  Text(
+                    "播放量",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+
+                  ///测试中
+
+                  Text(
+                    "视频时常",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                ],
               ),
             ),
             //底部的滑动条
@@ -244,16 +257,12 @@ class _VideoDetailsWidgetState extends State<VideoDetails2Widget> {
     if (_isFirst) {
       return Container();
     }
-    //评论区有文章回复支持
+    //
     return StreamBuilder(
       stream: _streamController.stream,
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
         return Row(
           children: [
-            Text(
-              buildStartText(),
-              style: TextStyle(fontSize: 14, color: Colors.white),
-            ),
             Expanded(
               child: Slider(
                 //滑动条当前的进度
@@ -278,6 +287,43 @@ class _VideoDetailsWidgetState extends State<VideoDetails2Widget> {
               buildEndText(),
               style: TextStyle(fontSize: 14, color: Colors.white),
             ),
+
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  // primary: Colors.purple[100],
+                  // padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                  // primary: Colors.white.withOpacity(0.5),
+                  // onPrimary: Colors.white,
+                  // onSurface: Colors.grey,
+                  ),
+
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return VideoPage();
+                }));
+              },
+              // color: Colors.blue,
+              child: new Icon(
+                Icons.settings_overscan,
+                color: Colors.white,
+              ),
+            ),
+
+            //全屏播放按钮
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Navigator.of(context)
+            //         .push(MaterialPageRoute(builder: (context) {
+            //       return VideoFullPage(_controller);
+            //     }));
+            //   },
+            //   // color: Colors.white,
+            //   child: new Icon(
+            //     Icons.settings_overscan,
+            //     color: Colors.white,
+            //   ),
+            // ),
           ],
         );
       },

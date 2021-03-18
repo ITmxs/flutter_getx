@@ -12,7 +12,7 @@
 /// https://www.toutiao.com/c/user/token/MS4wLjABAAAAYMrKikomuQJ4d-cPaeBqtAK2cQY697Pv9xIyyDhtwIM/
 /// lib/utils/date_utils.dart
 /// 日期时间操作工具类
-class DateUtils {
+class HODateUtils {
   ///默认的时间格式化格式
   static const String defaultDateFormatDate = "yyyy-MM-dd";
 

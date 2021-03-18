@@ -11,8 +11,8 @@ class VideoPage extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Center(
         // 该组件宽高默认填充父控件，你也可以自己设置宽高
-        child: VideoPlayerUI.asset(
-          dataSource: 'assets/video/list_item.mp4',
+        child: VideoPlayerUI.network(
+          url: 'https://res.exexm.com/cw_145225549855002',
           title: '传入的视频源',
         ),
       ),

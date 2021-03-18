@@ -77,8 +77,7 @@ class _HomeItem3PageState extends State<HomeItem3Page> {
             //列表的每个子Item 的样式
             itemBuilder: (BuildContext context, int index) {
               ArtBean artBean = _artBeanList[index];
-              // return HomeItemArtWidget(artBean: artBean);
-              return HomeItemArtWidget();
+              return HomeItemArtWidget(artBean: artBean);
             },
           ),
         ),
@@ -133,15 +132,15 @@ class _HomeItem3PageState extends State<HomeItem3Page> {
     // );
     //使用模拟数据
     ResponseInfo responseInfo =
-        await Future.delayed(Duration(milliseconds: 1), () {
+        await Future.delayed(Duration(milliseconds: 1000), () {
       List list = [];
 
       for (int i = 0; i < 10; i++) {
         list.add({
           "title": "测试数据$i",
           "artInfo": "这里是测试数据的简介",
-          "readCount": 1000,
-          "pariseCount": 1200,
+          "readCount": 100,
+          "pariseCount": 120,
         });
       }
 

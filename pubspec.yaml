@@ -25,7 +25,8 @@ dependencies:
   dio: 3.0.9
   # WebView
   webview_flutter: ^1.0.7
-
+# Material motion 规范的预构建动画
+  animations: ^1.1.1
   #偏好设置
   shared_preferences: ^0.5.12+4
 

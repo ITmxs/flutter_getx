@@ -68,7 +68,7 @@ class _MineWorkRecoderPageState extends State<MineWorkRecoderPage> {
       child: Column(
         children: [
           Text(
-            "${DateUtils.formatDateStr(workBean.workDate, format: "yyyy")}",
+            "${HODateUtils.formatDateStr(workBean.workDate, format: "yyyy")}",
             style: TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 16,
@@ -76,7 +76,7 @@ class _MineWorkRecoderPageState extends State<MineWorkRecoderPage> {
             ),
           ),
           Text(
-            "${DateUtils.formatDateStr(workBean.workDate, format: "MM-dd")}",
+            "${HODateUtils.formatDateStr(workBean.workDate, format: "MM-dd")}",
             style: TextStyle(
               fontSize: 14,
               color: Color(0xff666666),

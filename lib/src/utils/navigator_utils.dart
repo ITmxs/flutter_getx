@@ -58,7 +58,7 @@ class NavigatorUtils {
     @required BuildContext context,
     @required Widget targPage,
     bool isReplace = false,
-    int startMills=400,
+    int startMills = 400,
     bool opaque = false,
     Function(dynamic value) dismissCallBack,
   }) {
@@ -93,5 +93,65 @@ class NavigatorUtils {
         }
       });
     }
+  }
+
+  ///中间缩放的形式打开页面
+  /// 开源项目  Flutter-HO 早起的年轻人
+  /// github https://github.com/zhaolongs/flutter-ho
+  static void pushPageByCenterScale({
+    @required BuildContext context,
+    @required Widget targPage,
+    bool isReplace = false,
+    int startMills = 400,
+    int reversMills= 400,
+    bool opaque = false,
+    Function(dynamic value) dismissCallBack,
+  }) {
+
+
+    if (isReplace) {
+      Navigator.of(context).pushReplacement(_createRoute(context,targPage,startMills,reversMills)).then((value) {
+        if (dismissCallBack != null) {
+          dismissCallBack(value);
+        }
+      });
+    } else {
+      Navigator.of(context).push(_createRoute(context,targPage,startMills,reversMills)).then((value) {
+        if (dismissCallBack != null) {
+          dismissCallBack(value);
+        }
+      });
+    }
+  }
+  static Route _createRoute(BuildContext parentContext, Widget targPage, int startMills, int reversMills) {
+    return PageRouteBuilder<void>(
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return targPage;
+      },
+      transitionDuration: Duration(milliseconds: startMills),
+      reverseTransitionDuration: Duration(milliseconds: reversMills),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var rectAnimation = _createTween(parentContext)
+            .chain(CurveTween(curve: Curves.ease))
+            .animate(animation);
+
+        return Stack(
+          children: [
+            PositionedTransition(rect: rectAnimation, child: child),
+          ],
+        );
+      },
+    );
+  }
+  static Tween<RelativeRect> _createTween(BuildContext context) {
+    var windowSize = MediaQuery.of(context).size;
+    var box = context.findRenderObject() as RenderBox;
+    var rect = box.localToGlobal(Offset.zero) & box.size;
+    var relativeRect = RelativeRect.fromSize(rect, windowSize);
+
+    return RelativeRectTween(
+      begin: relativeRect,
+      end: RelativeRect.fill,
+    );
   }
 }

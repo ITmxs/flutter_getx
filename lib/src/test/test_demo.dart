@@ -1,21 +1,68 @@
 
+class DragWidget extends StatefulWidget {
+  final Widget child;
 
+  const DragWidget({Key key, this.child}) : super(key: key);
 
-/// 创建人： Created by zhaolong
-/// 创建时间：Created by  on 2021/1/12.
-///
-/// 可关注公众号：我的大前端生涯   获取最新技术分享
-/// 可关注网易云课堂：https://study.163.com/instructor/1021406098.htm
-/// 可关注博客：https://blog.csdn.net/zl18603543572
-/// 
-/// 代码清单 
-///代码清单
+  @override
+  State<StatefulWidget> createState() {
+    return _DragWidgetState();
+  }
+}
 
+class _DragWidgetState extends State<DragWidget>
+    with SingleTickerProviderStateMixin {
+  //动画控制器
+  AnimationController _animationController;
 
-class Test {
+  //动画
+  Animation<Alignment> _animation;
 
-  void test(){
+  //定义按下的
+  Alignment _dragAlignment = Alignment(0, 0);
 
+  @override
+  void initState() {
+    super.initState();
+    //创建动画控制器
+    _animationController = AnimationController.unbounded(vsync: this);
+    //动画控制器的监听
+    _animationController.addListener(() {});
   }
 
+  @override
+  void dispose() {
+    //销毁
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return GestureDetector(
+      //滑动开始
+      onPanStart: (DragStartDetails details) {
+        //强制停止上一个动画
+        _animationController.stop(canceled: true);
+      },
+      //滑动更新
+      onPanUpdate: (DragUpdateDetails details) {
+        _dragAlignment += Alignment(
+          details.delta.dx / size.width*2,
+          details.delta.dy / size.height*2,
+        );
+      },
+
+
+      //滑动结束
+      onPanEnd: (DragEndDetails details) {},
+      child: Align(
+        alignment: _dragAlignment,
+        child: Card(
+          child: widget.child,
+        ),
+      ),
+    );
+  }
 }
