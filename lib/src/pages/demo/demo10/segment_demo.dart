@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ho/src/utils/search/search_static.dart';
 
 /// 创建人： Created by zhaolong
 /// 创建时间：Created by  on 3/17/21.
@@ -39,6 +40,21 @@ class _SegmentPageState extends State {
           children: [
             buildSegment(),
             buildSlidSegment(),
+            SearchStaticBar(
+              heroTag: "searchStatidBar",
+              clickCallBack: () {},
+            ),
+            Container(
+              width: 120,
+
+              ///这里只是用于显示的搜索框不用做输入
+              ///参数[heroTag]用于页面过渡动画tag
+              ///参数clickCallBack为当前搜索框点击事件回调
+              child: SearchStaticBar(
+                heroTag: "searchStatidBar",
+                clickCallBack: () {},
+              ),
+            )
           ],
         ),
       ),
@@ -57,6 +73,7 @@ class _SegmentPageState extends State {
           0: Text("全部"),
           1: Text("收入"),
           2: Text("支出 "),
+          3: Text("data")
         },
         //当前选中的索引
         groupValue: _currentIndex,
@@ -74,7 +91,7 @@ class _SegmentPageState extends State {
         //边框颜色
         borderColor: Colors.blue,
         //按下的颜色
-        pressedColor:  Colors.blue.withOpacity(0.4),
+        pressedColor: Colors.blue.withOpacity(0.4),
       ),
     );
   }
@@ -89,6 +106,7 @@ class _SegmentPageState extends State {
           0: Text("全部"),
           1: Text("收入"),
           2: Text("支出 "),
+          3: Text("data")
         },
         //当前选中的索引
         groupValue: _currentIndex,

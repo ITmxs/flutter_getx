@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 /// 可关注网易云课堂：https://study.163.com/instructor/1021406098.htm
 /// 可关注博客：https://blog.csdn.net/zl18603543572
 ///
-
+///可用于视频进度控制
 main() {
   runApp(
     MaterialApp(
@@ -49,28 +49,26 @@ class _AppRootPageState extends State<AppRootPage> {
   Widget buildThem() {
     return Theme(
       data: ThemeData(
-        sliderTheme: SliderThemeData(
-          trackHeight: 1,
-          //滑块的颜色
-          thumbColor: Colors.deepOrange,
-          //滑块的大小
-            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10),
-          //点击滑块边缘的颜色
-          overlayColor: Colors.deepPurpleAccent.withOpacity(0.2),
-          //点击滑块边缘的显示半径
-          overlayShape: RoundSliderOverlayShape(overlayRadius: 20),
-          //滑动左侧滚动条的颜色
-          activeTrackColor: Colors.blue,
-          //滚动条右侧的颜色
-          inactiveTrackColor: Colors.grey,
-          //任何情况都显示气泡
-          showValueIndicator: ShowValueIndicator.always,
-          //气泡的文字样式
-          valueIndicatorTextStyle: TextStyle(color: Colors.white),
-          //气泡的背景
-          valueIndicatorColor: Colors.redAccent
-        )
-      ),
+          sliderTheme: SliderThemeData(
+              trackHeight: 1,
+              //滑块的颜色
+              thumbColor: Colors.deepOrange,
+              //滑块的大小
+              thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10),
+              //点击滑块边缘的颜色
+              overlayColor: Colors.deepPurpleAccent.withOpacity(0.2),
+              //点击滑块边缘的显示半径
+              overlayShape: RoundSliderOverlayShape(overlayRadius: 20),
+              //滑动左侧滚动条的颜色
+              activeTrackColor: Colors.blue,
+              //滚动条右侧的颜色
+              inactiveTrackColor: Colors.grey,
+              //任何情况都显示气泡
+              showValueIndicator: ShowValueIndicator.always,
+              //气泡的文字样式
+              valueIndicatorTextStyle: TextStyle(color: Colors.white),
+              //气泡的背景
+              valueIndicatorColor: Colors.redAccent)),
       child: buildSliderWidget(),
     );
   }

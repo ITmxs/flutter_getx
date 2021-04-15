@@ -36,7 +36,11 @@ class _DragImageAnimationPageState extends State {
         title: Text("图片"),
       ),
       body: DragWidget(
-        child: Image.asset("assets/images/banner1.png",width: 100,height: 100,),
+        child: Image.asset(
+          "assets/images/banner1.png",
+          width: 100,
+          height: 100,
+        ),
       ),
     );
   }
@@ -71,10 +75,15 @@ class _DragWidgetState extends State<DragWidget>
     //添加一个动画兼听
     _animationController.addListener(() {
       _dragAlignment = _animation.value;
-      setState(() {
-
-      });
+      setState(() {});
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    // ignore: unnecessary_statements
+    _animationController;
   }
 
   @override
@@ -121,9 +130,9 @@ class _DragWidgetState extends State<DragWidget>
     SpringSimulation springSimulation = SpringSimulation(
       //弹簧的属性配置
       SpringDescription(
-        mass: 10,//质量
-        stiffness: 1000,//硬度
-        damping: 0.75,//阻尼系数
+        mass: 10, //质量
+        stiffness: 1000, //硬度
+        damping: 0.75, //阻尼系数
       ),
       0,
       1,

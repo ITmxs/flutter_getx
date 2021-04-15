@@ -37,7 +37,7 @@ class _PageViewImagePageState extends State {
         //初时显示的页面
         initialPage: 1,
         //每页大小
-        viewportFraction: 0.85);
+        viewportFraction: 0.6);
   }
 
   @override
@@ -50,7 +50,7 @@ class _PageViewImagePageState extends State {
         child: Padding(
           padding: EdgeInsets.all(20),
           child: AspectRatio(
-            aspectRatio: 1,
+            aspectRatio: 4 / 3,
             child: buildBody(),
           ),
         ),
@@ -93,8 +93,8 @@ class _PageViewImagePageState extends State {
         return AnimatedBuilder(
           animation: _pageController,
           builder: (BuildContext context, Widget child) {
-            double page =1.0;
-            if(_hasLoading){
+            double page = 1.0;
+            if (_hasLoading) {
               page = _pageController.page;
             }
             // -1 0 1

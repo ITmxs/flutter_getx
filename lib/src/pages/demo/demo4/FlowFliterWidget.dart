@@ -17,7 +17,7 @@ import 'FlowItemWidget.dart';
 class FlowFliterWidget extends StatefulWidget {
   final double flag;
 
-  const FlowFliterWidget({Key key, this.flag=0.0}) : super(key: key);
+  const FlowFliterWidget({Key key, this.flag = 0.0}) : super(key: key);
 
   @override
   _FlowFliterWidgetState createState() => _FlowFliterWidgetState();

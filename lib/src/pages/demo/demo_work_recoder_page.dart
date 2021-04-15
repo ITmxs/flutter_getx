@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ho/src/utils/date_utils.dart';
+
 /// 创建人： Created by zhaolong
 /// 创建时间：Created by  on 2021/1/18.
 ///
@@ -77,6 +78,14 @@ class _MineWorkRecoderPageState extends State<MineWorkRecoderPage> {
           ),
           Text(
             "${HODateUtils.formatDateStr(workBean.workDate, format: "MM-dd")}",
+            style: TextStyle(
+              fontSize: 14,
+              color: Color(0xff666666),
+            ),
+          ),
+          //今天星期几
+          Text(
+            "${HODateUtils.getNowWeekDay()}",
             style: TextStyle(
               fontSize: 14,
               color: Color(0xff666666),

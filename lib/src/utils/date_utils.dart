@@ -1,5 +1,3 @@
-
-
 /// 创建人： Created by zhaolong
 /// 创建时间：Created by  on 2020/7/21.
 ///
@@ -20,10 +18,11 @@ class HODateUtils {
   static int getNowDateMs() {
     return DateTime.now().millisecondsSinceEpoch;
   }
-   ///获取当前日期 默认 格式为 年-月-日 时-分-秒
+
+  ///获取当前日期 默认 格式为 年-月-日 时-分-秒
   ///   "yyyy-MM-dd HH:mm:ss";
   ///   可通过 [format]指定格式
-  static String getNowDateStr({String format=defaultDateFormatDate}) {
+  static String getNowDateStr({String format = defaultDateFormatDate}) {
     return formatDate(DateTime.now(), format: format);
   }
 
@@ -32,6 +31,7 @@ class HODateUtils {
   static String formatDateMs(int ms, {bool isUtc = false, String format}) {
     return formatDate(getDateTimeByMs(ms, isUtc: isUtc), format: format);
   }
+
   ///将指定的日期毫秒转为 DateTime 格式数据
   static DateTime getDateTimeByMs(int ms, {bool isUtc = false}) {
     return ms == null
@@ -39,11 +39,11 @@ class HODateUtils {
         : DateTime.fromMillisecondsSinceEpoch(ms, isUtc: isUtc);
   }
 
-
   /// format date by date str.
   /// dateStr 日期字符串
-  static String formatDateStr(String dateStr, {bool isUtc, String format=defaultDateFormatDate}) {
-    if(dateStr==null||dateStr.length==0){
+  static String formatDateStr(String dateStr,
+      {bool isUtc, String format = defaultDateFormatDate}) {
+    if (dateStr == null || dateStr.length == 0) {
       return "--";
     }
     return formatDate(getDateTime(dateStr, isUtc: isUtc), format: format);
@@ -65,9 +65,8 @@ class HODateUtils {
   /// 格式要求
   /// 年（year）-> yyyy/yy   月（month） -> MM/M   日（day） -> dd/d
   /// 时（hour） -> HH/H      分钟（minute） -> mm/m   秒（second ）-> ss/s
-  static String formatDate(
-      DateTime dateTime,
-      {String format= defaultDateFormatDate}) {
+  static String formatDate(DateTime dateTime,
+      {String format = defaultDateFormatDate}) {
     if (dateTime == null) return "";
 
     if (format.contains("yy")) {
@@ -102,6 +101,7 @@ class HODateUtils {
     }
     return format;
   }
+
   /// get DateMilliseconds By DateStr.
   static int getDateMsByTimeStr(String dateStr) {
     DateTime dateTime = DateTime.tryParse(dateStr);
@@ -110,11 +110,11 @@ class HODateUtils {
 
   /// com format.
 
-
   ///获取今天是星期几
-  static String getNowWeekDay(){
+  static String getNowWeekDay() {
     return getWeekday(DateTime.now());
   }
+
   /// get WeekDay.
   /// dateTime
   /// isUtc
