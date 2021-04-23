@@ -292,7 +292,7 @@ class _LoginPageState extends State<LoginPage> {
       "password": password,
     };
 
-    //网络请求 发起 post 请求
+    // 网络请求 发起 post 请求
     // ResponseInfo responseInfo = await DioUtils.instance.postRequest(
     //   //请求地址
     //   url: HttpHelper.login,
@@ -300,10 +300,11 @@ class _LoginPageState extends State<LoginPage> {
     //   formDataMap: map,
     // );
     //模拟登录成功
-    ResponseInfo responseInfo = await Future.delayed(Duration(milliseconds: 1000),(){
+    ResponseInfo responseInfo =
+        await Future.delayed(Duration(milliseconds: 1000), () {
       return ResponseInfo(data: {
-        "userName":"测试数据",
-        "age":22,
+        "userName": "测试数据",
+        "age": 22,
       });
     });
     //响应成功

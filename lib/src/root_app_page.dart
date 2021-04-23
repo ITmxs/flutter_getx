@@ -29,7 +29,7 @@ class _RootAPPState extends State {
           bottomAppBarTheme: BottomAppBarTheme(color: Colors.blue)),
       //不显示 debug 标签
       debugShowCheckedModeBanner: false,
-      home: MineWorkRecoderPage(),
+      home: IndexPage(),
     );
   }
 }

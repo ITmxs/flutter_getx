@@ -24,6 +24,8 @@ dependencies:
   #用来加载网络数据
   dio: 3.0.9
   get: ^3.9.1
+  flutter_slidable: ^0.5.7
+  shake_animation_widget: ^2.1.2
   # WebView
   webview_flutter: ^1.0.7
 # Material motion 规范的预构建动画

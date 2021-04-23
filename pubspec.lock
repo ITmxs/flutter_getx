@@ -153,6 +153,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.0.2"
+  flutter_slidable:
+    dependency: "direct main"
+    description:
+      name: flutter_slidable
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.5.7"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -347,6 +354,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.0.5"
+  shake_animation_widget:
+    dependency: "direct main"
+    description:
+      name: shake_animation_widget
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "2.1.2"
   shared_preferences:
     dependency: "direct main"
     description:

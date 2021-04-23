@@ -1,11 +1,13 @@
 import 'package:common_utils/common_utils.dart';
 import 'package:flutter/material.dart';
+
 import 'package:screen/screen.dart';
 
 import 'package:video_player/video_player.dart';
 import '../after_layout.dart';
+import 'package:flutter_ho/src/pages/play/common/video/video_player_control.dart';
 import 'controller_widget.dart';
-import 'video_player_control.dart';
+
 
 class VideoPlayerPan extends StatefulWidget {
   VideoPlayerPan({
